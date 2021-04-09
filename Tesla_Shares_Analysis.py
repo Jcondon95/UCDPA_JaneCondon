@@ -27,6 +27,7 @@ def tesla_share_data():
 
 tesla_share_data()
 
+# Plot a graph with Tesla share data
 
 df = pd.read_csv("HistoricalData_1617705358646.csv",
                  parse_dates=['date'], dayfirst=True)

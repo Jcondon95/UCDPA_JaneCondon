@@ -11,8 +11,6 @@ print(musk_tweets.info())
 
 print(musk_tweets.head())
 
-print(musk_tweets.info())
-
 print(musk_tweets.shape)
 
 print(musk_tweets.describe())
@@ -103,7 +101,6 @@ def tesla_tweet_data():
 
 tesla_tweet_data()
 
-
 # Create above average engagement for Space X: observations with SpaceX_tweets_pop between mean and max number of likes
 print(SpaceX_tweets_pop.describe())
 tweets = SpaceX_tweets_pop['nlikes']
@@ -116,13 +113,13 @@ print(above_average_spacex.describe())
 # Build a for loop for each tweet with above average likes
 for tweet in above_average_spacex:
     print('Elon Musks tweet about Space X on ' + above_average_spacex["date"] + ' received ' + str(
-        above_average_spacex[['nlikes']]) + 'likes ')
+        above_average_spacex['nlikes']) + 'likes ')
 
 # Create above average engagement for Tesla: observations with tesla_tweets_pop between mean and max number of likes
 print(tesla_tweets_pop.describe())
-tweets2 = tesla_tweets_pop['nlikes']
-between = np.logical_and(tweets > 34545, tweets < 299079)
-above_average_tesla = SpaceX_tweets_pop[between]
+tweets = tesla_tweets_pop['nlikes']
+between = np.logical_and(tweets > 27334, tweets < 235245)
+above_average_tesla = tesla_tweets_pop[between]
 
 print(above_average_tesla)
 print(above_average_tesla.describe())
@@ -130,15 +127,13 @@ print(above_average_tesla.describe())
 # Build a for loop for each tweet with above average likes
 for tweet in above_average_tesla:
     print('Elon Musks tweet about Tesla on ' + above_average_tesla["date"] + ' received ' + str(
-        above_average_tesla[['nlikes']]) + 'likes ')
-
+        above_average_tesla['nlikes']) + 'likes ')
 
 df = pd.read_csv("2020-2021.csv",
                  parse_dates=['date'], dayfirst=True)
 
 tesla_tweets = df[df['tweet'].str.contains("@Tesla")]
 spacex_tweets = df[df['tweet'].str.contains("@SpaceX")]
-
 
 # Data for plotting
 x = tesla_tweets["date"]
@@ -161,3 +156,4 @@ ax.grid()
 fig.tight_layout()
 
 plt.show()
+
